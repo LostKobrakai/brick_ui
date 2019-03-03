@@ -19,7 +19,8 @@ defmodule BrickUiWeb.ComponentController do
         status: %{
           color: "red",
           label: "WIP"
-        }
+        },
+        source: module.render_source(variant)
       }
 
       render(conn, "show.html", entity: entity, name: name, variant: variant)

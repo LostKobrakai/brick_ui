@@ -1,0 +1,17 @@
+<div class="Pen-panel Pen-info" data-role="info">
+	<div class="Browser" data-behaviour="browser" id="browser-<%= @entity.id %>">
+		<div class="Browser-controls">
+			<ul class="Browser-tabs">
+				<%= for {panel, index} <- Enum.with_index(@panels, 1) do %>
+					<li class="Browser-tab Browser-tab--<%= panel %><%= if index == 1 do %> is-active<% end %>" data-role="tab">
+						<a href="#browser-<%= @entity.id %>-panel-<%= panel %>">
+							<%= panel %>
+						</a>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+
+		<%= render BrickUiWeb.Components.Panel, "html.html", assigns %>
+	</div>
+</div>

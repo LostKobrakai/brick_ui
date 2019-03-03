@@ -43,7 +43,14 @@
 
 						<div class="Pen-handle Pen-handle--browser" data-role="resize-handle"></div>
 
-						{% include "partials/pen/browser.nunj" %}
+						<%= render BrickUiWeb.Components.Browser, "default.html", panels: [
+							"HTML",
+							"View",
+							"Context",
+							"Assets",
+							"Info",
+							"Notes"
+						], entity: @entity %>
 
 				</div>
 			</div>
@@ -52,7 +59,7 @@
 		<div class="Frame-handle" data-role="frame-resize-handle"></div>
 		
 		<div class="Frame-panel Frame-panel--sidebar" data-role="sidebar">
-			<%= render BrickUiWeb.Components.Navigation, "default.html", components: components_to_data(@brick_ui.components) %>
+			<%= render BrickUiWeb.Components.Navigation, "default.html", navigation: components_to_navigation(@brick_ui.components) %>
 		</div>
 	</div>
 </div>

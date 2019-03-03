@@ -17,7 +17,7 @@ defmodule BrickUiWeb.Components.Status do
 
   defp dot(status) do
     style = %{
-      borderColor: status.color
+      backgroundColor: status.color
     }
 
     content_tag(:span, "",

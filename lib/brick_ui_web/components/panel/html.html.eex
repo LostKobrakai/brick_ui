@@ -1,0 +1,10 @@
+<div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-<%= @entity.id %>-panel-html">
+	<code class="Code Code--lang-html">
+		<pre>
+			<%= case @entity.source do %>
+				<% {:template, template} -> %>
+					<%= template %>
+			<% end %>
+		</pre>
+	</code>
+</div>

@@ -22,15 +22,24 @@ defmodule BrickUiWeb.ComponentView do
     end
   end
 
-  defp components_to_data(components) do
-    Enum.map(components, fn component ->
-      %{
-        label: component |> Module.split() |> List.last(),
-        status: %{
-          label: "WIP",
-          color: "red"
+  defp components_to_navigation(components) do
+    items =
+      Enum.map(components, fn component ->
+        %{
+          label: component |> Module.split() |> List.last(),
+          status: %{
+            label: "WIP",
+            color: "red"
+          }
         }
+      end)
+
+    [
+      %{
+        items: items,
+        label: "Components",
+        name: "components"
       }
-    end)
+    ]
   end
 end
