@@ -1,27 +1,20 @@
 defmodule BrickUi.Application do
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
   @moduledoc false
 
   use Application
 
   def start(_type, _args) do
-    # List all child processes to be supervised
-    children = [
-      # Start the endpoint when the application starts
-      BrickUiWeb.Endpoint
-      # Starts a worker by calling: BrickUi.Worker.start_link(arg)
-      # {BrickUi.Worker, arg},
-    ]
+    children =
+      if Application.get_env(:brick_ui, :start_own_styleguide, false) do
+        [BrickUiWeb.Endpoint]
+      else
+        []
+      end
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: BrickUi.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
-  # Tell Phoenix to update the endpoint configuration
-  # whenever the application is updated.
   def config_change(changed, _new, removed) do
     BrickUiWeb.Endpoint.config_change(changed, removed)
     :ok

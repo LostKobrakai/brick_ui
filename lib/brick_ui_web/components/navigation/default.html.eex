@@ -1,0 +1,21 @@
+<nav class="Navigation">
+  <%= if @components != [] do %>
+    <div class="Navigation-group">
+      <div class="Tree" data-behaviour="tree" id="tree-components">
+        <h3 class="Tree-title">Components</h3>
+        <ul class="Tree-items Tree-depth-1">
+          <%= for component <- @components do %>
+            <li class="Tree-item Tree-entity <%= if component[:current], do: "is-current" %>" data-role="item" <%= if component[:current], do: ~s(data-state="current") %>>
+              <a class="Tree-entityLink" href="{{ path( (item | url), request) }}" data-pjax>
+                <span><%= component.label %></span>
+                <%= if component[:status] do %>
+                  <%= render BrickUiWeb.Components.Status, "unlabeled.html", component %>
+                <% end %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</nav>

@@ -7,12 +7,9 @@
 # General application configuration
 use Mix.Config
 
-# Configures the endpoint
-config :brick_ui, BrickUiWeb.Endpoint,
-  url: [host: "localhost"],
-  secret_key_base: "TfuDLhlx062PCBK0cDiNhfoH9MGzPxLKX+NNbleH3bPdpR7d3OklndHOc+FnAdQ2",
-  render_errors: [view: BrickUiWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: BrickUi.PubSub, adapter: Phoenix.PubSub.PG2]
+config :brick_ui, start_own_styleguide: false
+
+config :brick, compile_sources: true
 
 # Configures Elixir's Logger
 config :logger, :console,

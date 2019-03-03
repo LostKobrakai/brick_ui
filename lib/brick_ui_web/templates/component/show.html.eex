@@ -1,0 +1,58 @@
+<div class="Frame" id="frame">
+
+	<div class="Frame-header">
+		<div class="Header">
+			<%= link @config.title, to: @routes.(:home, :index, []), class: "Header-title", dataPjax: true %>
+		</div>
+
+	</div>
+
+	<div class="Frame-body" data-role="body">
+
+		<div class="Frame-panel Frame-panel--main" data-role="main">
+			<div class="Frame-inner" id="pjax-container">
+				<div class="Pen" data-behaviour="pen" id="pen-<%= @entity.id %>">
+
+						<div class="Pen-panel Pen-header">
+							<h1 class="Pen-title">
+								<%= link @entity.title, to: "/#{@name}/#{@variant}/preview", class: "Pen-previewLink", title: "Component preview" %>
+							</h1>
+							<%= status_tag(@entity.status) %>
+						</div>
+
+						<div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-<%= @entity.id %>">
+							<div class="Preview-wrapper" data-role="resizer">
+								<div class="Preview-resizer">
+									<iframe
+											class="Preview-iframe"
+											data-role="window"
+											src="<%= "/#{@name}/#{@variant}/preview" %>"
+											sandbox="allow-same-origin allow-scripts allow-forms"
+											marginwidth="0" 
+											marginheight="0" 
+											frameborder="0" 
+											vspace="0" 
+											hspace="0" 
+											scrolling="yes">
+									</iframe>
+								</div>
+								<div class="Preview-handle" data-role="resize-handle"></div>
+								<div class="Preview-overlay"></div>
+							</div>
+						</div>
+
+						<div class="Pen-handle Pen-handle--browser" data-role="resize-handle"></div>
+
+						{% include "partials/pen/browser.nunj" %}
+
+				</div>
+			</div>
+		</div>
+
+		<div class="Frame-handle" data-role="frame-resize-handle"></div>
+		
+		<div class="Frame-panel Frame-panel--sidebar" data-role="sidebar">
+			<%= render BrickUiWeb.Components.Navigation, "default.html", components: components_to_data(@brick_ui.components) %>
+		</div>
+	</div>
+</div>

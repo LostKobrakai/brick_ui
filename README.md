@@ -1,5 +1,9 @@
 # BrickUi
 
+Styleguide UI for displaying `Brick` components. 
+
+The UI is based on the Mandelbrot theme of fractal styleguide. 
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`

@@ -24,6 +24,10 @@ defmodule BrickUiWeb do
       import Plug.Conn
       import BrickUiWeb.Gettext
       alias BrickUiWeb.Router.Helpers, as: Routes
+
+      def action(conn, _) do
+        apply(__MODULE__, action_name(conn), [conn, conn.params, conn.assigns])
+      end
     end
   end
 

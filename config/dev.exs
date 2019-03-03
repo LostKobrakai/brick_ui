@@ -1,5 +1,7 @@
 use Mix.Config
 
+config :brick_ui, start_own_styleguide: true
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
@@ -7,6 +9,10 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :brick_ui, BrickUiWeb.Endpoint,
+  url: [host: "localhost"],
+  secret_key_base: "TfuDLhlx062PCBK0cDiNhfoH9MGzPxLKX+NNbleH3bPdpR7d3OklndHOc+FnAdQ2",
+  render_errors: [view: BrickUiWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: BrickUi.PubSub, adapter: Phoenix.PubSub.PG2],
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,

@@ -1,5 +1,6 @@
 defmodule BrickUiWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :brick_ui
+  import Phoenix.Controller
 
   socket "/socket", BrickUiWeb.UserSocket,
     websocket: true,
@@ -42,5 +43,11 @@ defmodule BrickUiWeb.Endpoint do
     key: "_brick_ui_key",
     signing_salt: "DnwH55zm"
 
-  plug BrickUiWeb.Router
+  plug :accepts, ["html"]
+  plug :fetch_session
+  plug :fetch_flash
+  plug :protect_from_forgery
+  plug :put_secure_browser_headers
+
+  plug BrickUiWeb.Router, application: :brick_ui, namespace: BrickUiWeb.Components
 end

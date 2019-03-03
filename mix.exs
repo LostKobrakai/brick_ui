@@ -4,8 +4,8 @@ defmodule BrickUi.MixProject do
   def project do
     [
       app: :brick_ui,
-      version: "0.1.0",
-      elixir: "~> 1.5",
+      version: "0.0.1",
+      elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -38,7 +38,9 @@ defmodule BrickUi.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:recase, "~> 0.4"},
+      {:brick, "~> 0.1.0"}
     ]
   end
 end
